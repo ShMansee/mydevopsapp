@@ -1,6 +1,10 @@
-def test1():
-    assert 2 + 2 == 4
+from http.server import HTTPServer, BaseHTTPRequestHandler
 
-def test2():
-    message = "Hello i am doing it myself"
+class Handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"Hello from Production!")
+
+HTTPServer(("", 8080), Handler).serve_forever()
 

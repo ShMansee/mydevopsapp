@@ -1,3 +1,4 @@
+GNU nano 8.7.1                    docker.yml
 name: Build and Push Docker Image
 
 on:
@@ -11,6 +12,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
